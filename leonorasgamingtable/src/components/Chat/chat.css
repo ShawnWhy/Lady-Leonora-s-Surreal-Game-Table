@@ -1,0 +1,180 @@
+/* * {
+    box-sizing: border-box;
+}
+
+.sidenavchat {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    position: fixed;
+    z-index: 1;
+    right: 2%;
+    top: 50%;
+    min-width: 30vw;
+    background: #9BA5BE;
+     overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenavchat a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2196F3;
+    display: block;
+}
+
+.sidenavchat a:hover {
+    color: #064579;
+}
+
+.mainchat {
+    margin-left: 140px;
+    /* Same width as the sidebar + left position in px */
+    /* font-size: 28px; */
+    /* Increased text to enable scrolling */
+    /* padding: 0px 10px;
+} */
+
+/* .remove ul li {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.chatBtn {
+    padding: 3px 8px;
+    border-radius: 8px;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    margin-top: 10px;
+    outline: none;
+    position:relative;
+        z-index: -1
+}
+
+.chatBtn:hover {
+    background-color: #fff;
+    color: #000;
+    outline: none;
+    box-shadow: 3px black;
+}
+
+.chat-title {
+    margin-bottom: 50px;
+} */ */
+
+/* @media screen and (max-height: 450px) {
+    .sidenavchat {
+        padding-top: 15px;
+    }
+    .sidenavchat a {
+        font-size: 18px;
+    }
+} */
+
+.exterior{
+  
+    
+}
+.leftCurtain{
+    width:47%;
+    background-color:grey;
+    height:100%;
+    
+    position:fixed;
+    left:0;
+    z-index:0;
+}
+.leftcurtainOn{
+    animation:leftCurtain 2s forwards ;
+
+
+}
+.rightCurtainOn{
+    animation:rightCurtain 2s forwards ;
+}
+.rightCurtain{
+    width:47%;
+    background-color:red;
+    height:100%;
+    position:fixed;
+    right:0;
+    z-index:0
+}
+
+
+.allContainer{
+    text-align:center;
+    position:relative;
+    height:100%;
+}
+
+.nameInputDiv{
+    width:30%;
+    margin:auto;
+    position:relative;
+    top:40px;
+    z-index:1;
+    background-color:white;
+}
+
+
+.visible{
+    visibility:visible
+}
+.invisible{
+    visibility: collapse
+
+}
+
+.nameWarning{
+    position:relative;
+}
+
+
+.interior{
+    position:relative;
+    margin:auto;
+    z-index:-1;
+}
+
+@keyframes rightCurtain {
+    from {
+        transform:translatex(0px)
+    }
+    90%{
+        transform:translatex(500px)
+
+    }
+    100%
+        {
+            visibility:collaps;
+            transform:translatex(500px)
+        }
+  }
+
+  
+@keyframes leftCurtain {
+    from {
+        transform:translatex(0px)
+    }
+    90%{
+        transform:translatex(-500px)
+
+    }
+    100%
+        {
+            visibility:collaps;
+            transform:translatex(-500px)
+        }
+  }
+
+  .sidenavchat{
+      border:1px solid black;
+      position:fixed;
+      bottom:0;
+      left:13%;
+      z-index:-1;
+  }
+
