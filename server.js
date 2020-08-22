@@ -1,152 +1,76 @@
-// require("dotenv").config();
-// const compression = require("compression");
-// const mongoose = require('mongoose')
-// var session = require("express-session");
-// mongoose.set('useCreateIndex', true)
-// const passportControl = require('./lib/passport-control');
-// const routes = require("./routes")
-// const db= require("./db")
+
 const express = require('express');
 const app = express();
-const path = require("path");
 const server = require("http").createServer(app);
 const io = require("socket.io").listen(server, {
   transports: ["websocket", "polling"]
 })
 
 const PORT = process.env.PORT || 3001 ;
-
-
-//  if (process.env.NODE_ENV === "production") {
-
-  app.use(express.static("LingoLabsClient/build"));
-
-
-  app.get("/", (req, res) => {
-       res.sendFile(path.join(__dirname,  "LingoLabsClient/build", "index.html"));
-   });
-
-  // }
-
-// app.use(express.static("LingoLabsClient/build"));
-// app.get('/', function(req, res,next) {
-//     res.sendFile(path.join(__dirname,  "LingoLabsClient/build", "index.html"));
-// });
-// app.get('/', function (req, res) {
-//   console.log("Homepage");
-//   res.sendFile(__dirname + '/LingoLabsClient/build/index.html');
-// });
-// app.use('/static', express.static('node_modules'));
-
-
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-// app.use(compression());
-
-// app.use(
-// 	session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-//   );
-//   app.use(passportControl.initialize());
-//   app.use(passportControl.session());
-  
-// Routers
-
-// app.use(routes)
-
-
-
-// app.use(function(err, req, res, next) {
-// 	console.log('====== ERROR =======')
-// 	console.error(err.stack)
-// 	res.status(500)
-// })
-// app.use(function(req, res, next) {
-// 		console.log('===== passport user =======')
-// 		console.log(req.session)
-// 		console.log(req.user)
-// 		console.log('===== END =======')
-// })
-
-
-
-
-
-
-
-
-
-
-// Run server
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/LingoLabs", { useCreateIndex: true,
-// useNewUrlParser: true,useUnifiedTopology: true, useFindAndModify:false},);
-// var mongooseConnectString = mongodbUri.formatMongoose(uri);
-// mongoose.connect(mongooseConnectString,  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
-// var cluster = mongoose.connection;
-// cluster.on('error', console.error.bind(console, 'Connection error: '));
-// cluster.once('open', function callback () {
-//     console.log('Successfully connected to MongoDB');
-// });
-
-// db.UserInfo.create({username:"nobody", email:"somethng@smoething.com"},
-// function(){db.Item.create({itemname:"Niko Site #1", price:1200.00})
-// .then(({_id}) => db.UserInfo.findOneAndUpdate({username:"nobody"}, { $push: { shoppingcart: _id } }, { new: true },
-// function(){db.Item.create({itemname:"Niko Site #2", price:1250.00, purchased:true,downloadlink:"https://github.com/ShawnWhy/movie-magic-Shawn/archive/master.zip" })
-// .then(({_id}) => db.UserInfo.findOneAndUpdate({username:"nobody"}, { $push: { purchase: _id } }, { new: true },
-// function(){db.Item.create({itemname:"Niko Site #5", price:1350.00, purchased:true,downloadlink:"https://github.com/ShawnWhy/movie-magic-Shawn/archive/master.zip" })
-// .then(({_id}) => db.UserInfo.findOneAndUpdate({username:"nobody"}, { $push: { purchase: _id } }, { new: true },
-// function(){db.Item.create({itemname:"Niko Site #6", price:1240.00})
-// .then(({_id}) => db.UserInfo.findOneAndUpdate({username:"nobody"}, { $push: { shoppingcart: _id } }, { new: true },
-// function(){db.Item.create({itemname:"Niko Site #7", price:1340.00})
-// .then(({_id}) => db.UserInfo.findOneAndUpdate({username:"nobody"}, { $push: { shoppingcart: _id } }, { new: true },
-// ))}
-// ))}
-// ))}
-// ))}
-// ))})
-
-  
-
-
-
-  
-const users = {};
-io.on("connection", client => {
+// players with custom IDs
+  const users ={}
+//   all of the players names in an array
+  //player's turn
   var i= 0;
+  //all of the sentences
   var sentences = [];
+
+
+
+  io.on("connection", client => {
+//    
+    //the client is to receive a username
   client.on("username", username => {
-    console.log(username)
-    const user = {
+    console.log("username received")
+    console.log(username);
+    user = {
       name: username,
       id: client.id
     };
     users[client.id] = user;
     io.emit("connected", user);
     io.emit("users", Object.values(users));
-    players.push(username)
-
-    if(users.length>2){
-      io.emit("start", users[i].username)
+    // players.push(username)
+    console.log("player1")
+    var players = Object.values(users)
+    if(players[0]){
+    console.log(players[0].name)}
+    
+    //if there are more than one player in the room the game automatically starts
+    if(Object.values(users).length>3){
+        console.log("start");
+        var players = Object.values(users)
+      io.emit("start", players[i].name)
       i++
       if( i > users.length-1){
-        i=0;
+        i=0;    
       }
     }
   });
-
+  //when a player emit a sentence, it is received here and is broadcasted to others
   client.on("sentence", sentence=>{
+      console.log("received sentence")
+      console.log(sentence)
+      console.log(i)
     sentences.push(sentence);
-    io.emit("SentenceBroadcast",{
+    var players = Object.values(users)
+
+    //broadcasted to otheres and also emit the next player in line to others
+    io.emit("sentenceBroadcast",{
       text:sentence,
-      player:users[i].username
-
+      player:players[i].name
     })
+    console.log("server emitted")
+    i++
+    if(i>players.length-1){
+        i=0
+    }
+})
 
-  })
-
-  
-
+//the server receives the message
   client.on("send", message => {
+    //   console.log(message)
+    //server emit the message to other players
     io.emit("message", {
       text: message.message,
       date: new Date().toISOString(),
@@ -155,10 +79,12 @@ io.on("connection", client => {
   });
 
   client.on("disconnect", () => {
-    const username = users[client.id];
+    var username = users[client.id];
+    // username = username.username;
+    console.log("loggedout")
+    console.log(username)
     delete users[client.id];
     io.emit("disconnected", client.id);
-    players.filter((player)=>player!==username);
   });
 });
 

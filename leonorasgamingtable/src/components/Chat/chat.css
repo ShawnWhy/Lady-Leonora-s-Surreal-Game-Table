@@ -84,7 +84,7 @@
     
     position:fixed;
     left:0;
-    z-index:0;
+    z-index:1;
 }
 .leftcurtainOn{
     animation:leftCurtain 2s forwards ;
@@ -100,7 +100,7 @@
     height:100%;
     position:fixed;
     right:0;
-    z-index:0
+    z-index:1
 }
 
 
@@ -115,7 +115,7 @@
     margin:auto;
     position:relative;
     top:40px;
-    z-index:1;
+    z-index:2;
     background-color:white;
 }
 
@@ -136,7 +136,7 @@
 .interior{
     position:relative;
     margin:auto;
-    z-index:-1;
+    z-index:0;
 }
 
 @keyframes rightCurtain {
@@ -178,3 +178,13 @@
       z-index:-1;
   }
 
+  .toLeft{
+      float:left;
+      clear:both
+  }
+
+  .toRight{
+      float:right;
+      clear:both
+
+  }
