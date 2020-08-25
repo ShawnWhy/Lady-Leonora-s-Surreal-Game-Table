@@ -47,6 +47,8 @@ function Chat(){
     const [messages, setMessages] = useState([]);
 // this is the repository of all of the written sentences during the game
   const [allsentences, setAllsentences]=useState([])
+//this controls the final poem modal
+  const [poemModal, setPoemModal]=useState("off")
 
 // this happens automatically and changes when the 
 //username changes
@@ -203,7 +205,14 @@ return (
 
   {/* this is the room */}
   <div className="interior ">
-    <div className="finalPoem">
+    <div className="leonora"></div>
+    <div className="marcel"></div>
+    <div className="max"></div>
+    <div className="Andre"></div>
+
+
+
+    <div className={"finalPoem "+(poemModal==="on"? "visible":"invisible")}>
     <ul id="users">
                 
                 {allsentences.map((sentence, index) => (
@@ -216,14 +225,15 @@ return (
         <div><h1>OPPOSITES!</h1></div>
         <div>welcome {userName}</div>
         {/* the game sentence display would go here */}
-        <div className="display ">{currentdisplay}</div>
       </div>
-    <div>
+    <div className="table">
+    <div className="display ">{currentdisplay}</div>
+
       {/* this is the input div for the sentence, will only be visible when turn is on */}
       <input  className = {"sentenceInput "+(turn==="on"?"visible": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
       <button className={"submitbutton "+(turn==="on"?"visible": "invisible")} onClick={submitSentence}>broadcast Sentence</button>
       {/* this is the button to skip to the next player */}
-      <button className="turnButtom" onClick={submitSentence}>submit Sentence</button>
+      <button className="turnButtom" onClick={submitSentence}>next player</button>
     </div>
     
     {/* this is the window for chatting with either players or ghosts of the surrealists  */}

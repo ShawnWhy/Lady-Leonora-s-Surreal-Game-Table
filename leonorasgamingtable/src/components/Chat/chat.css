@@ -78,8 +78,10 @@
     
 }
 .leftCurtain{
+    background-image: url("./left.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     width:47%;
-    background-color:grey;
     height:100%;
     
     position:fixed;
@@ -95,8 +97,10 @@
     animation:rightCurtain 2s forwards ;
 }
 .rightCurtain{
+    background-image: url("./right.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
     width:47%;
-    background-color:red;
     height:100%;
     position:fixed;
     right:0;
@@ -105,8 +109,12 @@
 
 
 .allContainer{
+    background-image:url("./background1.JPG");
+    background-repeat:no-repeat;
+    background-size:100%;
     text-align:center;
-    position:relative;
+    position:fixed;
+    width:100%;
     height:100%;
 }
 
@@ -134,9 +142,13 @@
 
 
 .interior{
+  
     position:relative;
+    widows: 100%;
+    height:100%;
     margin:auto;
     z-index:0;
+    text-align: center;
 }
 
 @keyframes rightCurtain {
@@ -173,7 +185,7 @@
   .sidenavchat{
       border:1px solid black;
       position:fixed;
-      bottom:0;
+      top:0;
       left:13%;
       z-index:-1;
   }
@@ -186,5 +198,119 @@
   .toRight{
       float:right;
       clear:both
+
+  }
+
+  .table{
+      background-image:url("./table2.png");
+      background-repeat:no-repeat;
+      background-size:100%;
+      position:fixed;
+      bottom:0;
+      width:70%;
+      height:40%;
+      left:15%;
+      margin:auto;
+
+  }
+
+  .leonora{
+    height:50%;
+    widows: 10%;
+    background-image:url("./Leonora.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    position:fixed;
+    z-index:0;
+    width:20%;
+    margin:2%;
+    left:0
+}
+
+.max{
+    height:50%;
+    widows: 10%;
+    background-image:url("./Max.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    position:fixed;
+    z-index:0;
+    width:20%;
+    margin:2%;
+    left:22%;
+}
+.Andre{
+    height:50%;
+    widows: 10%;
+    background-image:url("./andre.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    position:fixed;
+    z-index:0;
+    width:20%;
+    margin:2%;
+    right:22%;
+}
+.marcel{
+    height:50%;
+    widows: 10%;
+    background-image:url("./marcel.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    position:fixed;
+    z-index:0;
+    width:20%;
+    right:0;
+    margin:2%
+}
+
+
+
+
+
+  @media only screen and (max-width: 480px){
+    .leftCurtain{
+        background-image: url("./left.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width:47%;
+        height:100%;
+        
+        position:fixed;
+        left:0;
+        z-index:1;
+    }
+    .rightCurtain{
+        background-image: url("./right.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width:47%;
+        height:100%;
+        position:fixed;
+        right:0;
+        z-index:1
+    }
+    .table{
+        background-image:url("./table2.png");
+        background-repeat:no-repeat;
+        background-size:auto 100%;
+        position:fixed;
+        bottom:0;
+        z-index:1;
+        left:0;
+        width:100%;
+        height:30%;
+  
+    }
+
+    .leonora{
+        height:50%;
+        widows: 10%;
+        background-image:url("./Leonora.png");
+        background-repeat:no-repeat;
+        background-size: 
+    }
+  
+
 
   }
