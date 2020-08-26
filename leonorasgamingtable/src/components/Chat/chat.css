@@ -109,9 +109,11 @@
 
 
 .allContainer{
-    background-image:url("./background1.JPG");
+    background-color:black;
+    background-image:url("./background.jpg");
     background-repeat:no-repeat;
-    background-size:100%;
+    background-size:auto 100%;
+    background-position-x:center;
     text-align:center;
     position:fixed;
     width:100%;
@@ -119,12 +121,18 @@
 }
 
 .nameInputDiv{
-    width:30%;
+    width:40%;
     margin:auto;
     position:relative;
     top:40px;
     z-index:2;
     background-color:white;
+    border: double black;
+    text-align: center;
+}
+.nameinput{
+    margin:auto;
+    width:80%;
 }
 
 
@@ -135,7 +143,11 @@
     visibility: collapse
 
 }
-
+.finalPoem{
+    position:fixed;
+    background-color:white;
+    
+}
 .nameWarning{
     position:relative;
 }
@@ -150,6 +162,7 @@
     z-index:0;
     text-align: center;
 }
+
 
 @keyframes rightCurtain {
     from {
@@ -202,17 +215,34 @@
   }
 
   .table{
-      background-image:url("./table2.png");
+      /* background-image:url("./table2.png");
       background-repeat:no-repeat;
-      background-size:100%;
+      background-size:100%; */
       position:fixed;
-      bottom:0;
-      width:70%;
-      height:40%;
-      left:15%;
+      bottom:6%;
+      width:40%;
+      left:30%;
       margin:auto;
+      background-color:white;
+      border:double black;
 
   }
+
+  .display{
+      margin:1%;
+  }
+  .sentenceInput{
+      width:80%;
+  }
+  @keyframes fallAnimation{
+    0% {bottom:100% }
+    100%{bottom:1%}
+}
+@keyframes fallAnimation2{
+    0% {bottom:100% }
+    100%{bottom:10%}
+}
+
 
   .leonora{
     height:50%;
@@ -224,7 +254,9 @@
     z-index:0;
     width:20%;
     margin:2%;
-    left:0
+    left:15%;
+    animation:fallAnimation 1s both
+    
 }
 
 .max{
@@ -235,9 +267,12 @@
     background-size: contain;
     position:fixed;
     z-index:0;
-    width:20%;
+    width:15%;
     margin:2%;
-    left:22%;
+    left:25%;
+    animation:fallAnimation2 1s both;
+    animation-delay:.5s
+
 }
 .Andre{
     height:50%;
@@ -247,9 +282,12 @@
     background-size: contain;
     position:fixed;
     z-index:0;
-    width:20%;
+    width:15%;
     margin:2%;
     right:22%;
+    animation:fallAnimation2  1s both;
+    animation-delay: 1s
+
 }
 .marcel{
     height:50%;
@@ -260,9 +298,24 @@
     position:fixed;
     z-index:0;
     width:20%;
-    right:0;
-    margin:2%
+    margin:2%;
+    right:5%;
+
+    animation:fallAnimation 1s both;
+    animation-delay:1.5s;
+
 }
+.title{
+    background-color:white;
+    border: double black;
+    margin:auto;
+    width:30%;
+}
+
+
+
+
+
 
 
 
@@ -291,26 +344,98 @@
         z-index:1
     }
     .table{
-        background-image:url("./table2.png");
+        /* background-image:url("./table2.png");
         background-repeat:no-repeat;
-        background-size:auto 100%;
+        background-size:auto 100%; */
         position:fixed;
         bottom:0;
         z-index:1;
         left:0;
         width:100%;
-        height:30%;
+        height:10%;
   
     }
 
-    .leonora{
-        height:50%;
-        widows: 10%;
-        background-image:url("./Leonora.png");
-        background-repeat:no-repeat;
-        background-size: 
+    .allContainer{
+        background-size:auto 100%;
+        background-position: center;
     }
-  
+    @keyframes fallAnimation{
+        0% {bottom:100% }
+        100%{bottom:-15%}
+    }
+    @keyframes fallAnimation2{
+        0% {bottom:100% }
+        100%{bottom:-20%}
 
 
   }
+
+  .leonora{
+    height:50%;
+    background-image:url("./Leonora.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    position:fixed;
+    z-index:1;
+    width:15%;
+    margin:2%;
+    left:5%;
+    animation:fallAnimation 1s both
+    
+}
+
+.max{
+    height:50%;
+    background-image:url("./Max.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    position:fixed;
+    z-index:1;
+    width:15%;
+    margin:2%;
+    left:20%;
+    animation:fallAnimation2 1s both;
+    animation-delay:.5s
+
+}
+.Andre{
+    height:50%;
+    background-image:url("./andre.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    position:fixed;
+    z-index:1;
+    width:15%;
+    margin:2%;
+    right:15%;
+    animation:fallAnimation2  1s both;
+    animation-delay: 1s
+
+}
+.marcel{
+    height:50%;
+    background-image:url("./marcel.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    position:fixed;
+    z-index:1;
+    width:20%;
+    margin:2%;
+    right:0%;
+
+    animation:fallAnimation 1s both;
+    animation-delay:1.5s;
+
+}
+.title{
+    background-color:white;
+    border: double black;
+    margin:auto;
+    width:50%;
+    position:relative;
+    top:5%;
+
+    
+}
+}

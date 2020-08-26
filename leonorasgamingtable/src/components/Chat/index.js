@@ -180,7 +180,9 @@ function Chat(){
     socket.emit("sentence",sentence )
   }
   // {"profileImage "+(imageDisplay==="invisible"? 'sleep':'activate' )}
-
+  const openPoem = () =>{
+    setPoemModal("on")
+  }
 return (
 //everything
 <div className="allContainer">
@@ -205,10 +207,10 @@ return (
 
   {/* this is the room */}
   <div className="interior ">
-    <div className="leonora"></div>
-    <div className="marcel"></div>
-    <div className="max"></div>
-    <div className="Andre"></div>
+    <div className={interior==="on"?"leonora":"invisible"}></div>
+    <div className={interior==="on"?"marcel":"invisible"}></div>
+    <div className={interior==="on"?"max":"invisible"}></div>
+    <div className={interior==="on"?"Andre":"invisible"}></div>
 
 
 
@@ -220,20 +222,24 @@ return (
                 ))}
               </ul>
 
+    </div>n
+    <div className={"rules "+(poemModal==="on"? "":"invisible")}>
+    
     </div>
-      <div className={"title "+(interior==="on"?"visible": "invisible")}>
-        <div><h1>OPPOSITES!</h1></div>
-        <div>welcome {userName}</div>
+      <div className={"title "+(interior==="on"?"": "invisible")}>
+      <div>welcome {userName}</div>
+      <div className="titleText"><h1>let's play OPPOSITES!</h1></div>
         {/* the game sentence display would go here */}
       </div>
-    <div className="table">
+    <div className={"table "+ (interior==="on"? "visible" : "invisible")}>
     <div className="display ">{currentdisplay}</div>
 
       {/* this is the input div for the sentence, will only be visible when turn is on */}
-      <input  className = {"sentenceInput "+(turn==="on"?"visible": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
-      <button className={"submitbutton "+(turn==="on"?"visible": "invisible")} onClick={submitSentence}>broadcast Sentence</button>
+      <input  className = {"sentenceInput "+(turn==="on"?"": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
+      <button className={"submitbutton "+(turn==="on"?"": "invisible")} onClick={submitSentence}>broadcast Sentence</button>
       {/* this is the button to skip to the next player */}
       <button className="turnButtom" onClick={submitSentence}>next player</button>
+      <button className="openPoemButton" onClick={openPoem}>see poem</button>
     </div>
     
     {/* this is the window for chatting with either players or ghosts of the surrealists  */}
