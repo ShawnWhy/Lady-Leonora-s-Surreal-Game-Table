@@ -143,10 +143,46 @@
     visibility: collapse
 
 }
-.finalPoem{
+.finalPoemModal{
+    background-color:black;
+    opacity: 80%;
+    position:fixed;
+    z-index:3;
+    text-align:center;
+    height:100%;
+    width:100%;
+}
+.rules{
+    background-color:black;
+    opacity: 80%;
+    position:fixed;
+    z-index:3;
+    text-align:center;
+    height:100%;
+    width:100%;
+}
+.finalPoemModalContent{
     position:fixed;
     background-color:white;
-    
+    opacity:100%;
+
+    z-index:2;
+    top:30%;
+    left:25%;
+    width:50%;
+    height:60%;
+    overflow: hidden;
+}
+.rulesContent{
+    position:fixed;
+    background-color:white;
+    opacity:100%;
+    z-index:2;
+    top:30%;
+    left:25%;
+    width:50%;
+    height:60%;
+    overflow: hidden;
 }
 .nameWarning{
     position:relative;
@@ -161,6 +197,43 @@
     margin:auto;
     z-index:0;
     text-align: center;
+}
+
+.closeModal{
+    border:1px solid black;
+    background-color:white;
+    
+    position:absolute;
+    padding:3%;
+
+    right:5%;
+    top:1%;
+}
+p{
+    position:relative;
+    top:15%;
+}
+.closeModal:hover{
+    background-color:black;
+    color:white;
+}
+
+.closeRules{
+    border:1px solid black;
+    background-color:white;
+    position:absolute;
+    padding:3%;
+
+    right:5%;
+    top:1%;
+}
+.closeRules:hover{
+    background-color:black;
+    color:white;
+}
+
+.openRulesButton{
+    float:right;
 }
 
 
@@ -196,11 +269,13 @@
   }
 
   .sidenavchat{
-      border:1px solid black;
+      border:double black;
       position:fixed;
+      height:15%;
       top:0;
       left:13%;
       z-index:-1;
+      background-color:white
   }
 
   .toLeft{

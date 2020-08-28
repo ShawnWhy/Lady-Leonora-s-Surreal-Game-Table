@@ -49,6 +49,8 @@ function Chat(){
   const [allsentences, setAllsentences]=useState([])
 //this controls the final poem modal
   const [poemModal, setPoemModal]=useState("off")
+//this controls the modal for the rules
+ const [rules, setRules]=useState("off")
 
 // this happens automatically and changes when the 
 //username changes
@@ -180,12 +182,52 @@ function Chat(){
     socket.emit("sentence",sentence )
   }
   // {"profileImage "+(imageDisplay==="invisible"? 'sleep':'activate' )}
+  //opens the modal for the entire poem
   const openPoem = () =>{
     setPoemModal("on")
   }
+  const closePoem = () =>{
+    setPoemModal("off")
+  }
+  //opens the modal for the rules modal
+  const openRules = ()=>{
+    setRules("on")
+  }
+  const closeRules=()=>{
+    setRules("off")
+  }
+
 return (
 //everything
 <div className="allContainer">
+<div className={"finalPoemModal "+(poemModal==="on"? "visible":"invisible")}>
+    <div className="finalPoemModalContent">
+      <div className="closeModal" onClick={closePoem}>X</div>
+    <ul className="FinalPoemText">
+                
+                {allsentences.map((sentence, index) => (
+                  <li key={index}>{sentence}</li>
+                ))}
+              </ul>
+
+    </div>
+    </div>
+    <div className={"rules "+(rules ==="on"? "":"invisible")}>
+      <div className="rulesContent">
+        <div className="closeRules" onClick={closeRules}>X</div>
+        <p> For a minimum of three players, the first player writes any sentence, question, or statement and shows it to the next player. The second player then must write the exact opposite of the statement, word by word. The first statement is conceiled and passed onto the third player who must negate the negation of the first sentence.</p>
+        <p>Here is an example composed by M Sandoz, F R Simon, and M Zimbacca </p>
+        <p>
+        <br />When my mother swigs champagne.
+        <br />My father’s corpse gets drunk on chianti.
+        <br />Our mother’s infants dry up tearlessly.
+        <br />The moribund waters of my fatherland.
+        <br />An infant dessicates our universe.
+        <br />An old corpse waters their afterlife.
+        <br />Two infants absorb what precedes death
+        </p>
+    </div>
+  </div>
 {/* the curtain and the name block */}
   <div className="exterior">
     <div className={"leftCurtain "+( curtain==="on"? "leftcurtainOn":"")}></div>
@@ -214,18 +256,7 @@ return (
 
 
 
-    <div className={"finalPoem "+(poemModal==="on"? "visible":"invisible")}>
-    <ul id="users">
-                
-                {allsentences.map((sentence, index) => (
-                  <li key={index}>{sentence}</li>
-                ))}
-              </ul>
-
-    </div>n
-    <div className={"rules "+(poemModal==="on"? "":"invisible")}>
-    
-    </div>
+ 
       <div className={"title "+(interior==="on"?"": "invisible")}>
       <div>welcome {userName}</div>
       <div className="titleText"><h1>let's play OPPOSITES!</h1></div>
@@ -240,6 +271,8 @@ return (
       {/* this is the button to skip to the next player */}
       <button className="turnButtom" onClick={submitSentence}>next player</button>
       <button className="openPoemButton" onClick={openPoem}>see poem</button>
+      <button className="openRulesButton" onClick={openRules}>see Rules</button>
+
     </div>
     
     {/* this is the window for chatting with either players or ghosts of the surrealists  */}
