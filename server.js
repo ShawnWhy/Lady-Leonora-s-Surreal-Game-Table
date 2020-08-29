@@ -10,7 +10,7 @@ const io = require("socket.io").listen(server, {
 
 
 
-// app.use(express.static("leonorasgamingtable/build"));
+app.use(express.static("leonorasgamingtable/build"));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname,  "leonorasgamingtable/build", "index.html"));
