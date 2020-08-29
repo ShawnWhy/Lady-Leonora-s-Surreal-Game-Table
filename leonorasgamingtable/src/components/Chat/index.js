@@ -57,7 +57,7 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{
 // this happens automatically and changes when the 
 //username changes
   useEffect(() => {
-    if(userName){
+    if(userName.length>0){
     socket.on("connect", function () {
       console.log("clientsideworks")
       socket.emit("username", userName);
@@ -344,3 +344,4 @@ return (
 }
 
 export default Chat;
+ 

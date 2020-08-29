@@ -48,7 +48,7 @@ const PORT = process.env.PORT || 3001 ;
     console.log(players[0].name)}
     
     //if there are more than one player in the room the game automatically starts
-    if(Object.values(users).length>3){
+    if(Object.values(users).length>1){
         console.log("start");
         var players = Object.values(users)
       io.emit("start", players[i].name)
