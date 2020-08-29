@@ -7,12 +7,11 @@ const io = require("socket.io").listen(server, {
   transports: ["websocket", "polling"]
 })
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
-app.use(express.static("leonorasgamingtable/build"));
 
-app.get("*", (req, res) => {
+// app.use(express.static("leonorasgamingtable/build"));
+
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname,  "leonorasgamingtable/build", "index.html"));
 });
 const PORT = process.env.PORT || 3001 ;
