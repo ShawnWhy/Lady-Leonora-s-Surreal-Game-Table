@@ -122,7 +122,7 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{
   {
   //if so, the thing warns you and then turns off right after
    setNameWarning("on");
-   setInterval(() => {
+   setTimeout(() => {
    setNameWarning("off")
     }, 2000);
   }
@@ -132,7 +132,7 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{
     setUserName(tempUsername)
       // console.log(userName);
   //turns on and connects to socket.io after two seconds
-    setInterval(() => {
+    setTimeout(() => {
       setInterior("on")
       // console.log(userName); 
       // const socket = openSocket("http://localhost:3001", {
