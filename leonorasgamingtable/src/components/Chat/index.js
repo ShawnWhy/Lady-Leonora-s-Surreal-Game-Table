@@ -13,14 +13,14 @@ import openSocket from 'socket.io-client';
 function Chat(){
 
 
-  const socket = openSocket("http://localhost:3001", {
-  transports: ["websocket", "polling"]
-});
-// // const socket = openSocket ("wss://shawnyulingolabsmaster.herokuapp.com/",{
-//   const socket = openSocket ("wss://localhost:3001",{
-
-//     transports:["websocket","polling"]
+//   const socket = openSocket("http://localhost:3001", {
+//   transports: ["websocket", "polling"]
 // });
+const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{
+  // const socket = openSocket ("wss://localhost:3001",{
+
+    transports:["websocket","polling"]
+});
 
 //turn interior stuffs on 
   const [interior, setInterior]= useState("off")
@@ -135,9 +135,9 @@ function Chat(){
     setInterval(() => {
       setInterior("on")
       // console.log(userName); 
-      const socket = openSocket("http://localhost:3001", {
-      transports: ["websocket", "polling"]
-        }); 
+      // const socket = openSocket("http://localhost:3001", {
+      // transports: ["websocket", "polling"]
+      //   }); 
        }, 2000);
     }
   }
