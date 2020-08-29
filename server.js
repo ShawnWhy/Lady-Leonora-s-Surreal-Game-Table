@@ -7,6 +7,11 @@ const io = require("socket.io").listen(server, {
   transports: ["websocket", "polling"]
 })
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(express.static("leonorasgamingtable/build"));
+
 const PORT = process.env.PORT || 3001 ;
 // players with custom IDs
   const users ={}  
