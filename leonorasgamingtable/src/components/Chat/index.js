@@ -227,7 +227,7 @@ return (
 
     
     </div>
-    <div className={"rules "+(rules ==="on"? "":"invisible")}>
+    <div className={"rules "+(rules ==="on"? "visible":"invisible")}>
       <div className="rulesContent">
         <div className="closeRules" onClick={closeRules}>X</div>
         <p> For a minimum of three players, the first player writes any sentence, question, or statement and shows it to the next player. The second player then must write the exact opposite of the statement, word by word. The first statement is conceiled and passed onto the third player who must negate the negation of the first sentence.</p>
@@ -272,7 +272,7 @@ return (
 
 
  
-      <div className={"title "+(interior==="on"?"": "invisible")}>
+      <div className={"title "+(interior==="on"?"visible": "invisible")}>
       <div>welcome {userName}</div>
       <div className="titleText"><h1>let's play OPPOSITES!</h1></div>
         {/* the game sentence display would go here */}
@@ -281,8 +281,8 @@ return (
     <div className="display ">{currentdisplay}</div>
 
       {/* this is the input div for the sentence, will only be visible when turn is on */}
-      <input  className = {"sentenceInput "+(turn==="on"?"": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
-      <button className={"submitbutton "+(turn==="on"?"": "invisible")} onClick={submitSentence}>broadcast Sentence</button>
+      <input  className = {"sentenceInput "+(turn==="on"?"visible": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
+      <button className={"submitbutton "+(turn==="on"?"visible": "invisible")} onClick={submitSentence}>broadcast Sentence</button>
       {/* this is the button to skip to the next player */}
       <button className="turnButtom gameButton" onClick={submitSentence}>next player</button>
       <button className="openPoemButton gameButton" onClick={openPoem}>see poem</button>
@@ -293,8 +293,8 @@ return (
 
 </div>
     {/* this is the window for chatting with either players or ghosts of the surrealists  */}
-    <div className={"sidenavchat "+(interior==="on"?"":"invisible")}> 
-      <div className={"chatWindow "+(chat==="on"?"":"invisible")}>
+    <div className={"sidenavchat "+(interior==="on"?"visible":"invisible")}> 
+      <div className={"chatWindow "+(chat==="on"?"visible":"invisible")}>
           {!messages.length ? (
                 <h1 className="chat-title">Speak</h1>
                  ) : (
@@ -313,7 +313,7 @@ return (
             </div>
        <div>
          {/* the window to type in message */}
-            <input className={"chatBox "+(chat==="on"?"":"invisible")}
+            <input className={"chatBox "+(chat==="on"?"visible":"invisible")}
               type="text"
               placeholder="message"
               value={message}
