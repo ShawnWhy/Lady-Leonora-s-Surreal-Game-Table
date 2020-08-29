@@ -1,5 +1,6 @@
 
 const express = require('express');
+const quotes = require("./utility/quotes")
 const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io").listen(server, {
@@ -8,12 +9,14 @@ const io = require("socket.io").listen(server, {
 
 const PORT = process.env.PORT || 3001 ;
 // players with custom IDs
-  const users ={}
+  const users ={}  
 //   all of the players names in an array
   //player's turn
   var i= 0;
   //all of the sentences
   var sentences = [];
+
+
 
 
 
@@ -86,11 +89,38 @@ const PORT = process.env.PORT || 3001 ;
     delete users[client.id];
     io.emit("disconnected", client.id);
   });
+
+client.on("sendToGhost", (message)=>{
+  console.log("ghost received")
+  console.log(message);
+  io.emit
+  io.emit("message", {
+    text: message.message,
+    date: new Date().toISOString(),
+    user: message.username
+    
+  });
+  setTimeout(() => {
+  var quoteLength = quotes.length-1;
+  var randomNumber = Math.floor(Math.random() * quoteLength)
+  var ghostMessage = quotes[randomNumber]
+  io.emit("message",{
+    text:ghostMessage.quote,
+    date: new Date().toISOString(),
+    user:ghostMessage.name
+
+  })
+    
+  }, 100);
+  
+  
+})
 });
 
 // users.filter((user) => user.id!==id);
   
 
 server.listen(PORT, function() {
-	console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  
   });

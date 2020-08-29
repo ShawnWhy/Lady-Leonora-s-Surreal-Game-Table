@@ -51,6 +51,8 @@ function Chat(){
   const [poemModal, setPoemModal]=useState("off")
 //this controls the modal for the rules
  const [rules, setRules]=useState("off")
+ //chatwindow
+ const [chat, setChat]=useState("off")
 
 // this happens automatically and changes when the 
 //username changes
@@ -161,7 +163,9 @@ function Chat(){
       message: message,
       username: userName,
       };
-      socket.emit("sendToghost", newMessage);
+      console.log("ghostmessagesent")
+      console.log(newMessage)
+      socket.emit("sendToGhost", newMessage);
       //then set the message variable to blank
       setMessage("");
     };
@@ -197,6 +201,13 @@ function Chat(){
     setRules("off")
   }
 
+  const openChat =()=>{
+    setChat("on")
+  }
+  const closeChat =()=>{
+    setChat("off")
+  }
+ 
 return (
 //everything
 <div className="allContainer">
@@ -209,8 +220,12 @@ return (
                   <li key={index}>{sentence}</li>
                 ))}
               </ul>
+              <button><a href={"data:text/plain;charset=utf-8, "+ allsentences} download="poem.txt">download poem</a></button>
+
 
     </div>
+
+    
     </div>
     <div className={"rules "+(rules ==="on"? "":"invisible")}>
       <div className="rulesContent">
@@ -269,19 +284,21 @@ return (
       <input  className = {"sentenceInput "+(turn==="on"?"": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
       <button className={"submitbutton "+(turn==="on"?"": "invisible")} onClick={submitSentence}>broadcast Sentence</button>
       {/* this is the button to skip to the next player */}
-      <button className="turnButtom" onClick={submitSentence}>next player</button>
-      <button className="openPoemButton" onClick={openPoem}>see poem</button>
-      <button className="openRulesButton" onClick={openRules}>see Rules</button>
+      <button className="turnButtom gameButton" onClick={submitSentence}>next player</button>
+      <button className="openPoemButton gameButton" onClick={openPoem}>see poem</button>
+      <button className="openRulesButton gameButton" onClick={openRules}>see Rules</button>
 
     </div>
     
+
+</div>
     {/* this is the window for chatting with either players or ghosts of the surrealists  */}
-    <div className="sidenavchat"> 
-      <div className="chatWindow">
+    <div className={"sidenavchat "+(interior==="on"?"":"invisible")}> 
+      <div className={"chatWindow "+(chat==="on"?"":"invisible")}>
           {!messages.length ? (
-                <h1 className="chat-title">Speak Easy</h1>
+                <h1 className="chat-title">Speak</h1>
                  ) : (
-                 <div> 
+                 <div className="messageBox"> 
                   {messages.map(({ user, date, text }, index) => (
                     <div
                       key={index}
@@ -296,14 +313,17 @@ return (
             </div>
        <div>
          {/* the window to type in message */}
-            <input className="chatBox"
+            <input className={"chatBox "+(chat==="on"?"":"invisible")}
               type="text"
               placeholder="message"
               value={message}
               onChange={(event) => setMessage(event.currentTarget.value)}
             />
-            <button className="chatBtn" onClick={handleMessageOut}>speak</button>
-            <button className="chatBtn" onClick={handleMessagetoGhostOut}>speak with ghost</button>
+            <button className={"chatbtn "+(chat==="on"?"":"invisible")} onClick={handleMessageOut}>speak</button>
+            <button className={"chatbtn "+(chat==="on"?"":"invisible")} onClick={handleMessageOut} onClick={handleMessagetoGhostOut}>speak with ghost</button>
+            <button className={"chatbtn "+(chat==="on"?"":"invisible")} onClick={closeChat}>close chat</button>
+            <button className={"chatbtn "+(chat==="on"?"invisible":"")} onClick={openChat}>open chat</button>
+
             
              <div className="roster">
                {/* the roster with ghost  */}
@@ -319,7 +339,6 @@ return (
           </div> 
         </div>
   </div>
-</div>
 </div>  
 );
 }

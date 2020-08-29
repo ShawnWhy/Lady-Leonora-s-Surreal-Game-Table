@@ -140,9 +140,20 @@
     visibility:visible
 }
 .invisible{
-    visibility: collapse
+    visibility: collapse;
+    width:0;
+    height:0;
 
 }
+
+.messageBox::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .messageBox {
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+  }
 .finalPoemModal{
     background-color:black;
     opacity: 80%;
@@ -209,6 +220,10 @@
     right:5%;
     top:1%;
 }
+
+.gameButton{
+    margin:1%;
+}
 p{
     position:relative;
     top:15%;
@@ -271,21 +286,31 @@ p{
   .sidenavchat{
       border:double black;
       position:fixed;
-      height:15%;
-      top:0;
-      left:13%;
-      z-index:-1;
+      top:10%;
+      right:11%;
+      z-index:1;
       background-color:white
+  }
+  .messageBox{
+      border:double black;
+      width:100%;
+      overflow:scroll;
+      text-align: left;
+
   }
 
   .toLeft{
-      float:left;
-      clear:both
+      width:100%;
+      position:relative;
+      left:1%
+      
+      
   }
 
   .toRight{
-      float:right;
-      clear:both
+      width:100%;
+        position:relative;
+        right:1%;
 
   }
 
