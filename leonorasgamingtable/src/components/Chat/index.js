@@ -229,7 +229,7 @@ return (
     
     </div>
     <div className={"rules "+(rules ==="on"? "":"invisible")}>
-      <div className={"rulescontent "+(rules ==="on"? "visible":"invisible")}>
+      <div className={"rulesContent "+(rules ==="on"? "visible":"invisible")}>
         <div className="closeRules" onClick={closeRules}>X</div>
         <p> For a minimum of three players, the first player writes any sentence, question, or statement and shows it to the next player. The second player then must write the exact opposite of the statement, word by word. The first statement is conceiled and passed onto the third player who must negate the negation of the first sentence.</p>
         <p>Here is an example composed by M Sandoz, F R Simon, and M Zimbacca </p>
