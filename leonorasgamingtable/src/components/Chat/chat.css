@@ -156,7 +156,7 @@
   }
 .finalPoemModal{
     background-color:black;
-    /* opacity: 80%; */
+    opacity: 80%;
     position:fixed;
     z-index:2;
     text-align:center;
@@ -165,7 +165,7 @@
 }
 .rules{
     background-color:black;
-    /* opacity: 80%; */
+    opacity: 80%;
     position:fixed;
     z-index:2;
     text-align:center;
@@ -177,7 +177,7 @@
     background-color:white;
     opacity:100%;
 
-    z-index:2;
+    z-index:3;
     top:30%;
     left:25%;
     width:50%;
@@ -188,7 +188,7 @@
     position:fixed;
     background-color:white;
     opacity:100%;
-    z-index:2;
+    z-index:3;
     top:30%;
     left:25%;
     width:50%;
