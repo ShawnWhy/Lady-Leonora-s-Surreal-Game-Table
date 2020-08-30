@@ -212,7 +212,7 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoCo
 return (
 //everything
 <div className="allContainer">
-<div className={"finalPoemModal "+(poemModal==="on"? "visible":"invisible")}>
+<div className={"finalPoemModal "+(poemModal==="on"? "":"invisible")}>
     <div className="finalPoemModalContent">
       <div className="closeModal" onClick={closePoem}>X</div>
     <ul className="FinalPoemText">
@@ -228,7 +228,7 @@ return (
 
     
     </div>
-    <div className={"rules "+(rules ==="on"? "visible":"invisible")}>
+    <div className={"rules "+(rules ==="on"? "":"invisible")}>
       <div className="rulesContent">
         <div className="closeRules" onClick={closeRules}>X</div>
         <p> For a minimum of three players, the first player writes any sentence, question, or statement and shows it to the next player. The second player then must write the exact opposite of the statement, word by word. The first statement is conceiled and passed onto the third player who must negate the negation of the first sentence.</p>
