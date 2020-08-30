@@ -88,7 +88,7 @@ const PORT = process.env.PORT || 3001 ;
 
 //the server receives the message
   client.on("send", message => {
-    //   console.log(message)
+      console.log(message)
     //server emit the message to other players
     io.emit("message", {
       text: message.message,

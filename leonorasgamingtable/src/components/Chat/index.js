@@ -13,7 +13,7 @@ import openSocket from 'socket.io-client';
 function Chat(){
 
 
-//   const socket = openSocket("http://localhost:3001", {autoConnect:false,
+//   const socket = io("http://localhost:3001", {autoConnect:false,
 //   transports: ["websocket", "polling"]
 // });
 const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoConnect:false,
@@ -57,7 +57,7 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoCo
 //username changes
   useEffect(() => {
     if(userName.length>0){
-      socket.open();
+    socket.connect();
     socket.on("connect", function () {
       console.log("clientsideworks")
       socket.emit("username", userName);
@@ -151,6 +151,9 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoCo
       message: message,
       username: userName,
     };
+    console.log("messageout")
+    console.log(newMessage)
+    socket.open();
     socket.emit("send", newMessage);
     //then set the message variable to blank
     setMessage("");
@@ -160,6 +163,8 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoCo
   const handleMessagetoGhostOut = (event)=>{
     event.preventDefault();
     event.stopPropagation();
+    socket.open();
+
     var newMessage = {
       message: message,
       username: userName,
@@ -182,6 +187,8 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoCo
 
   //emits the sentence
   const submitSentence = ()=>{
+    socket.open();
+
     console.log("sending sentence")
     console.log(sentence)
     socket.emit("sentence",sentence )
