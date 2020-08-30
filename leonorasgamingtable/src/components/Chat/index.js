@@ -13,11 +13,10 @@ import openSocket from 'socket.io-client';
 function Chat(){
 
 
-//   const socket = openSocket("http://localhost:3001", {
+//   const socket = openSocket("http://localhost:3001", {autoConnect:false,
 //   transports: ["websocket", "polling"]
 // });
-const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{
-  // const socket = openSocket ("wss://localhost:3001",{
+const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoConnect:false,
 
     transports:["websocket","polling"]
 });
@@ -58,6 +57,7 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{
 //username changes
   useEffect(() => {
     if(userName.length>0){
+      socket.open();
     socket.on("connect", function () {
       console.log("clientsideworks")
       socket.emit("username", userName);
@@ -106,7 +106,8 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{
         return users.filter((user) => user.id!==id);
       });
     });
-  }, [userName]);
+  }
+  , [userName]);
 
 //on the exterior, sets the username for this session
  const handleNameInputChange = function(e){
@@ -272,17 +273,17 @@ return (
 
 
  
-      <div className={"title "+(interior==="on"?"visible": "invisible")}>
+      <div className={"title "+(interior==="on"?"": "invisible")}>
       <div>welcome {userName}</div>
       <div className="titleText"><h1>let's play OPPOSITES!</h1></div>
         {/* the game sentence display would go here */}
       </div>
-    <div className={"table "+ (interior==="on"? "visible" : "invisible")}>
+    <div className={"table "+ (interior==="on"? "" : "invisible")}>
     <div className="display ">{currentdisplay}</div>
 
       {/* this is the input div for the sentence, will only be visible when turn is on */}
-      <input  className = {"sentenceInput "+(turn==="on"?"visible": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
-      <button className={"submitbutton "+(turn==="on"?"visible": "invisible")} onClick={submitSentence}>broadcast Sentence</button>
+      <input  className = {"sentenceInput "+(turn==="on"?"": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
+      <button className={"submitbutton "+(turn==="on"?"": "invisible")} onClick={submitSentence}>broadcast Sentence</button>
       {/* this is the button to skip to the next player */}
       <button className="turnButtom gameButton" onClick={submitSentence}>next player</button>
       <button className="openPoemButton gameButton" onClick={openPoem}>see poem</button>

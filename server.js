@@ -38,12 +38,19 @@ const PORT = process.env.PORT || 3001 ;
       name: username,
       id: client.id
     };
+    // if (Object.values(users).includes(user)==true){
+    //   console.log("useralreadyexists")
+    // }
+    // else{
+
+    
     users[client.id] = user;
-    io.emit("connected", user);
+    client.broadcast.emit("connected", user);
     io.emit("users", Object.values(users));
     // players.push(username)
     console.log("player1")
     var players = Object.values(users)
+    console.log(players)
     if(players[0]){
     console.log(players[0].name)}
     
@@ -57,7 +64,8 @@ const PORT = process.env.PORT || 3001 ;
         i=0;    
       }
     }
-  });
+  // }
+});
   //when a player emit a sentence, it is received here and is broadcasted to others
   client.on("sentence", sentence=>{
       console.log("received sentence")
@@ -71,7 +79,7 @@ const PORT = process.env.PORT || 3001 ;
       text:sentence,
       player:players[i].name
     })
-    console.log("server emitted")
+    console.log("server emitted sentencec")
     i++
     if(i>players.length-1){
         i=0
