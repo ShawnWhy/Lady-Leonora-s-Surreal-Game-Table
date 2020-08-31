@@ -146,14 +146,23 @@
 
 }
 
+
 .messageBox::-webkit-scrollbar {
     display: none;
   }
-  
-  .messageBox {
+  .messageBox{
+    border:double black;
+    width:100%;
+    overflow:scroll;
+    text-align: left;
     -ms-overflow-style: none;
     scrollbar-width: none; 
-  }
+
+}
+.onChatbox{
+    height:300px;
+}
+
 .finalPoemModal{
     background-color:rgba(0, 0, 0, 0.452);
     /* opacity: 80%; */
@@ -277,23 +286,21 @@ p{
             transform:translatex(-500px)
         }
   }
+  a{
+      color:black;
+  }
 
   .sidenavchat{
       border:double black;
       position:fixed;
-      top:10%;
+      top:2%;
       right:11%;
       z-index:1;
       background-color:white;
       width:20%;
+      text-align:center;
   }
-  .messageBox{
-      border:double black;
-      width:100%;
-      overflow:scroll;
-      text-align: left;
 
-  }
 
   .toLeft{
       width:60%;
@@ -468,6 +475,24 @@ p{
 
 
   @media only screen and (max-width: 480px){
+  
+    .messageBox{
+        border:double black;
+        width:100%;
+        overflow:scroll;
+        text-align:left;
+        max-height:30%;
+        overflow:scroll;
+  
+    }
+    li{
+        position:relative;
+        left:-70%;
+
+    }
+   
+
+    
     .leftCurtain{
         background-image: url("./left.png");
         background-repeat: no-repeat;
@@ -494,7 +519,7 @@ p{
         background-repeat:no-repeat;
         background-size:auto 100%; */
         position:fixed;
-        bottom:10%;
+        bottom:5%;
         z-index:1;
         left:0;
         width:100%;
@@ -581,7 +606,32 @@ p{
     width:50%;
     position:relative;
     top:5%;
+    font-size:medium;
+    z-index:1
 
     
 }
+ul{ list-style-type: none; }
+
+.sidenavchat{
+    border:double black;
+    position:fixed;
+    top:6%;
+    right:2%;
+    z-index:1;
+    background-color:white;
+    width:20%;
+    text-align:center;
+}
+
+.largeChat{
+    left:10%;
+width:80%
+}
+
+.centeredLi{
+    left:-10%;
+
+}
+
 }

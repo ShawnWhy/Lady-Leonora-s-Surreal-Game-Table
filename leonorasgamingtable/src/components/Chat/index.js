@@ -305,12 +305,12 @@ return (
 
 </div>
     {/* this is the window for chatting with either players or ghosts of the surrealists  */}
-    <div className={"sidenavchat "+(interior==="on"?"visible":"invisible")}> 
+    <div className={"sidenavchat "+(interior==="on"?"visible ":"invisible ")+(chat==="on"?"largeChat":"")}> 
       <div className={"chatWindow "+(chat==="on"?"visible":"invisible")}>
           {!messages.length ? (
                 <h1 className="chat-title">Speak</h1>
                  ) : (
-                 <div className="messageBox"> 
+                 <div className={"messageBox "+(chat==="on"?"onChatbox":"")}> 
                   {messages.map(({ user, date, text }, index) => (
                     <div
                       key={index}
@@ -337,16 +337,16 @@ return (
             <button className={"chatbtn "+(chat==="on"?"invisible":"")} onClick={openChat}>open chat</button>
 
             
-             <div className="roster">
+             <div className="roster ">
                {/* the roster with ghost  */}
               <h3>players in the room</h3>
                 <ul id="users">
-                <li>Leonora</li>
-                <li>Marcel</li>
-                <li>Max</li>
-                <li>Andre</li>
+                <li className={(chat==="on"?"centeredLi":"")}>Leonora</li>
+                <li className={(chat==="on"?"centeredLi":"")}>Marcel</li>
+                <li className={(chat==="on"?"centeredLi":"")}>Max</li>
+                <li className={(chat==="on"?"centeredLi":"")}>Andre</li>
                 {users.map(({ name, id }) => (
-                  <li key={id}>{name}</li>
+                  <li key={id} className={(chat==="on"?"centeredLi":"")}>{name}</li>
                 ))}
               </ul>
           </div> 
