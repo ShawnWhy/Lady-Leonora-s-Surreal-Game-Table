@@ -155,7 +155,7 @@
     scrollbar-width: none; 
   }
 .finalPoemModal{
-    background-color:black;
+    background-color:rgba(0, 0, 0, 0.452);
     /* opacity: 80%; */
     position:fixed;
     z-index:2;
@@ -164,7 +164,7 @@
     width:100%;
 }
 .rules{
-    background-color:black;
+    background-color:rgba(0, 0, 0, 0.452);
     /* opacity: 80%; */
     position:fixed;
     z-index:2;
@@ -403,8 +403,55 @@ p{
 .title{
     background-color:white;
     border: double black;
-    margin:auto;
     width:30%;
+    margin:auto;
+    overflow: hidden;
+}
+.titleAnimate{
+
+    animation:titleAnimate 1s both
+}
+.tableAnimate{
+    animation:tableAnimate 1s both
+}
+
+@keyframes titleAnimate{
+    0% {transform:scaleX(0);
+    transform-origin: left;}
+    100%{transform:scaleX(1);
+        transform-origin: left}
+}
+@keyframes tableAnimate{
+    0% {transform:scaleX(0);
+    transform-origin: right;}
+    100%{transform:scaleX(1);
+        transform-origin: right}
+}
+.titleText{
+    animation:titleText 1s both;
+    animation-delay: 1s;
+
+}
+.tableContentText{
+    animation:TableContentText 1s both;
+    animation-delay: 1s;
+
+}
+@keyframes titleText{
+    0%{
+        visibility:collapse
+    }
+    100%{
+        visibility:visible
+    }
+}
+@keyframes tableContentText{
+    0%{
+        visibility:collapse
+    }
+    100%{
+        visibility:visible
+    }
 }
 
 

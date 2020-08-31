@@ -280,13 +280,17 @@ return (
 
 
  
-      <div className={"title "+(interior==="on"?"": "invisible")}>
-      <div>welcome {userName}</div>
-      <div className="titleText"><h1>let's play OPPOSITES!</h1></div>
+      <div className={"title "+(interior==="on"?"titleAnimate": "invisible")}>
+      <div className={interior==="on"?"titleText":"invisible"}>welcome {userName}</div>
+      <div className={interior==="on"?"titleText":"invisible"}><h1>let's play OPPOSITES!</h1></div>
         {/* the game sentence display would go here */}
       </div>
-    <div className={"table "+ (interior==="on"? "" : "invisible")}>
+    <div className={"table "+ (interior==="on"? "tableAnimate" : "invisible")}>
+    <div className={interior==="on"?"titleText":"invisible"}>
     <div className="display ">{currentdisplay}</div>
+    <div className = {turn==="on"? "invisible":""}>please wait your turn</div>
+    {/* <div className = {turn==="on"? "":"invisible"}>please enter the opposite sentence</div> */}
+
 
       {/* this is the input div for the sentence, will only be visible when turn is on */}
       <input  className = {"sentenceInput "+(turn==="on"?"": "invisible")} onChange={TypeSentence} type="text" placeholder="write your sentence please"></input>
@@ -296,8 +300,8 @@ return (
       <button className="openPoemButton gameButton" onClick={openPoem}>see poem</button>
       <button className="openRulesButton gameButton" onClick={openRules}>see Rules</button>
 
+      </div>
     </div>
-    
 
 </div>
     {/* this is the window for chatting with either players or ghosts of the surrealists  */}
@@ -337,6 +341,7 @@ return (
                {/* the roster with ghost  */}
               <h3>players in the room</h3>
                 <ul id="users">
+                <li>Leonora</li>
                 <li>Marcel</li>
                 <li>Max</li>
                 <li>Andre</li>
