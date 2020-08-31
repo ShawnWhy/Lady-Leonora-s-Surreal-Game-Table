@@ -284,7 +284,8 @@ p{
       top:10%;
       right:11%;
       z-index:1;
-      background-color:white
+      background-color:white;
+      width:20%;
   }
   .messageBox{
       border:double black;
@@ -295,17 +296,20 @@ p{
   }
 
   .toLeft{
-      width:100%;
+      width:60%;
       position:relative;
-      left:1%
+      left:1%;
+      margin:3%;
+
       
       
   }
 
   .toRight{
-      width:100%;
+      width:60%;
         position:relative;
-        right:1%;
+        right:-37%;
+        margin:3%;
 
   }
 

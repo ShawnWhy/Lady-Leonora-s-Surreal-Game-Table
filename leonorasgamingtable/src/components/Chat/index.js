@@ -13,13 +13,13 @@ import openSocket from 'socket.io-client';
 function Chat(){
 
 
-//   const socket = io("http://localhost:3001", {autoConnect:false,
-//   transports: ["websocket", "polling"]
-// });
-const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoConnect:false,
-
-    transports:["websocket","polling"]
+  const socket = io("http://localhost:3001", {autoConnect:false,
+  transports: ["websocket", "polling"]
 });
+// const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoConnect:false,
+
+//     transports:["websocket","polling"]
+// });
 
 //turn interior stuffs on 
   const [interior, setInterior]= useState("off")
@@ -228,7 +228,7 @@ return (
                   <li key={index}>{sentence}</li>
                 ))}
               </ul>
-              <button><a href={"data:text/plain;charset=utf-8, "+ allsentences} download="poem.txt">download poem</a></button>
+              <button><a href={"data:text/plain;charset=utf-8, "+ JSON.stringify(allsentences,null,1)} download="poem.txt">download poem</a></button>
 
 
     </div>
