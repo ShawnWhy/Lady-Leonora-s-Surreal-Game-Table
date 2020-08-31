@@ -13,13 +13,13 @@ import openSocket from 'socket.io-client';
 function Chat(){
 
 
-  const socket = io("http://localhost:3001", {autoConnect:false,
-  transports: ["websocket", "polling"]
-});
-// const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoConnect:false,
-
-//     transports:["websocket","polling"]
+//   const socket = io("http://localhost:3001", {autoConnect:false,
+//   transports: ["websocket", "polling"]
 // });
+const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoConnect:false,
+
+    transports:["websocket","polling"]
+});
 
 //turn interior stuffs on 
   const [interior, setInterior]= useState("off")
