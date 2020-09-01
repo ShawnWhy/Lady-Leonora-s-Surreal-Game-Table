@@ -1,6 +1,8 @@
 # Lady-Leonora-s-Surreal-Game-Table
 Play Surrealist Games Across the Internet with Friends!
 
+http://ladyleonorasgamingroom.herokuapp.com/
+
 
 the player goes on to the page and input their preferred name to connect.
 
@@ -10,28 +12,15 @@ once connected, the user interface will change,  opens the curtain and photograp
 
 their names will appear on the list of players.
 
-socket. emit ("username", Input)
-and then the socket server will emit it to everyother player connected. 
-once the user receives the "users" 
-socket.on("users", ) the UI will put the name into the names awway and it 
-will be displayed in the roster. 
-the player chooses player photo and join in. 
+once inside the room, the player can look at the rules of the game for 
+instructions.  
 
-the first in the roster will be the one 
-on connect, if the players exceed 6 people, ( 2 people, )
+the players will take turns in inputing sentences into the poem. 
 
-socket.emit start and the game wll start.
-server will emit "start"
-upon receiving start, the first player in the roster will have their name emitted by the server. 
-upon receiving the name, the player with the matching name 
-will have their imput window appearing before them.
+at anytime, the player can download the generated poem as a text file. 
 
-upon submit, the player will emit "sentence" upon receiving, the server will brodcast the sentence and the username of the next one in line.
+at anytime, the player can chat with each other, or speak with the resident ghosts,
+who will randomly speak to the players in the personages' famous quotations. 
 
-upon receiving the sent sentence, all teh players will have the send sentence as a "displayed" in teh center of table. if username===sentenceBroadcast, writing window appear. 
 
-once the player is done, clicks sent and emit another "sentence"
 
-at anytime, the player can review unveil the whole text and download it
-
-this is to be done useing data.url data:
