@@ -1,5 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 // import API from "../../utils/API";
 import Style from "./chat.css"
 // import Moment from "react-moment";
@@ -13,6 +13,7 @@ import openSocket from 'socket.io-client';
 function Chat(){
 
 
+
 //   const socket = io("http://localhost:3001", {autoConnect:false,
 //   transports: ["websocket", "polling"]
 // });
@@ -21,6 +22,8 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoCo
     transports:["websocket","polling"]
 });
 
+//referenced mchatwindow
+const chatwindowRef = useRef();
 //turn interior stuffs on 
   const [interior, setInterior]= useState("off")
 //turn curtains on and off
@@ -55,6 +58,10 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoCo
 
 // this happens automatically and changes when the 
 //username changes
+
+//   var chatWindow = reactDOM.
+
+// },[])
   useEffect(() => {
     if(userName.length>0){
     socket.connect();
@@ -73,6 +80,12 @@ const socket = openSocket ("wss://ladyleonorasgamingroom.herokuapp.com/",{autoCo
       // console.log(users[id])
       //push the message into the messages array
       setMessages((messages) => [...messages, message]);
+      // console.log(chatwindowRef.current.scrollTop);
+      chatwindowRef.current.scrollTop = chatwindowRef.current.scrollHeight;
+      // console.log(chatwindowRef.current.scrollHeight);
+      // console.log(chatwindowRef.current.scrollTop)
+
+      
     });
     // as other players connect to the server, the player's name is pushed into the list of players
     socket.on("connected", (user) => {
@@ -306,11 +319,11 @@ return (
 </div>
     {/* this is the window for chatting with either players or ghosts of the surrealists  */}
     <div className={"sidenavchat "+(interior==="on"?"visible ":"invisible ")+(chat==="on"?"largeChat":"")}> 
-      <div className={"chatWindow "+(chat==="on"?"visible":"invisible")}>
+      <div   className={"chatWindow "+(chat==="on"?"visible":"invisible")}>
           {!messages.length ? (
                 <h1 className="chat-title">Speak</h1>
                  ) : (
-                 <div className={"messageBox "+(chat==="on"?"onChatbox":"")}> 
+                 <div  ref= {chatwindowRef} className={"messageBox "+(chat==="on"?"onChatbox":"")}> 
                   {messages.map(({ user, date, text }, index) => (
                     <div
                       key={index}
