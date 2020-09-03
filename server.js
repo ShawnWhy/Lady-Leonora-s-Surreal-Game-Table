@@ -32,8 +32,8 @@ const PORT = process.env.PORT || 3001 ;
 //    
     //the client is to receive a username
   client.on("username", username => {
-    console.log("username received")
-    console.log(username);
+    // console.log("username received")
+    // console.log(username);
     user = {
       name: username,
       id: client.id
@@ -48,15 +48,15 @@ const PORT = process.env.PORT || 3001 ;
     client.broadcast.emit("connected", user);
     io.emit("users", Object.values(users));
     // players.push(username)
-    console.log("player1")
+    // console.log("player1")
     var players = Object.values(users)
-    console.log(players)
+    // console.log(players)
     if(players[0]){
-    console.log(players[0].name)}
+    // console.log(players[0].name)}
     
     //if there are more than one player in the room the game automatically starts
     if(Object.values(users).length>1){
-        console.log("start");
+        // console.log("start");
         var players = Object.values(users)
       io.emit("start", players[i].name)
       i++
@@ -68,9 +68,9 @@ const PORT = process.env.PORT || 3001 ;
 });
   //when a player emit a sentence, it is received here and is broadcasted to others
   client.on("sentence", sentence=>{
-      console.log("received sentence")
-      console.log(sentence)
-      console.log(i)
+      // console.log("received sentence")
+      // console.log(sentence)
+      // console.log(i)
     sentences.push(sentence);
     var players = Object.values(users)
 
@@ -79,7 +79,7 @@ const PORT = process.env.PORT || 3001 ;
       text:sentence,
       player:players[i].name
     })
-    console.log("server emitted sentencec")
+    // console.log("server emitted sentencec")
     i++
     if(i>players.length-1){
         i=0
@@ -88,7 +88,7 @@ const PORT = process.env.PORT || 3001 ;
 
 //the server receives the message
   client.on("send", message => {
-      console.log(message)
+      // console.log(message)
     //server emit the message to other players
     io.emit("message", {
       text: message.message,
@@ -100,15 +100,15 @@ const PORT = process.env.PORT || 3001 ;
   client.on("disconnect", () => {
     var username = users[client.id];
     // username = username.username;
-    console.log("loggedout")
-    console.log(username)
+    // console.log("loggedout")
+    // console.log(username)
     delete users[client.id];
     io.emit("disconnected", client.id);
   });
 
 client.on("sendToGhost", (message)=>{
-  console.log("ghost received")
-  console.log(message);
+  // console.log("ghost received")
+  // console.log(message);
   io.emit
   io.emit("message", {
     text: message.message,

@@ -66,7 +66,7 @@ const chatwindowRef = useRef();
     if(userName.length>0){
     socket.connect();
     socket.on("connect", function () {
-      console.log("clientsideworks")
+      // console.log("clientsideworks")
       socket.emit("username", userName);
     });}
     //set all the users in the chatroom 
@@ -75,7 +75,7 @@ const chatwindowRef = useRef();
     });
     //when receiving messages
     socket.on("message", (message) => {
-      console.log(message);
+      // console.log(message);
       // var id = message.id
       // console.log(users[id])
       //push the message into the messages array
@@ -100,9 +100,9 @@ const chatwindowRef = useRef();
     // the turn ariable is turned on and the player can type into the input div
 
     socket.on("sentenceBroadcast", (sentence)=>{
-      console.log("newsentence")
-      console.log(sentence.text);
-      console.log(sentence.player)
+      // console.log("newsentence")
+      // console.log(sentence.text);
+      // console.log(sentence.player)
       setCurrentDisplay(sentence.text);
       setAllsentences((allsentences) => [...allsentences, sentence.text
       ])
@@ -164,8 +164,8 @@ const chatwindowRef = useRef();
       message: message,
       username: userName,
     };
-    console.log("messageout")
-    console.log(newMessage)
+    // console.log("messageout")
+    // console.log(newMessage)
     socket.open();
     socket.emit("send", newMessage);
     //then set the message variable to blank
@@ -182,8 +182,8 @@ const chatwindowRef = useRef();
       message: message,
       username: userName,
       };
-      console.log("ghostmessagesent")
-      console.log(newMessage)
+      // console.log("ghostmessagesent")
+      // console.log(newMessage)
       socket.emit("sendToGhost", newMessage);
       //then set the message variable to blank
       setMessage("");
@@ -202,8 +202,8 @@ const chatwindowRef = useRef();
   const submitSentence = ()=>{
     socket.open();
 
-    console.log("sending sentence")
-    console.log(sentence)
+    // console.log("sending sentence")
+    // console.log(sentence)
     socket.emit("sentence",sentence )
   }
   // {"profileImage "+(imageDisplay==="invisible"? 'sleep':'activate' )}
