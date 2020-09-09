@@ -64,7 +64,7 @@ const PORT = process.env.PORT || 3001 ;
         i=0;    
       }
     }
-  // }
+  }
 });
   //when a player emit a sentence, it is received here and is broadcasted to others
   client.on("sentence", sentence=>{
