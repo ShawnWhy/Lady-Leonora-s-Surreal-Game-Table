@@ -241,7 +241,7 @@ return (
                   <li key={index}>{sentence}</li>
                 ))}
               </ul>
-              <button><a href={"data:text/plain;charset=utf-8, "+ JSON.stringify(allsentences,null,1)} download="poem.txt">download poem</a></button>
+              <button className="downloadButton"><a href={"data:text/plain;charset=utf-8, "+ JSON.stringify(allsentences,null,1)} download="poem.txt">download poem</a></button>
 
 
     </div>

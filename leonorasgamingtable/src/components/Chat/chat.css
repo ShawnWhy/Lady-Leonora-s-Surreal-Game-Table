@@ -171,6 +171,7 @@
     text-align:center;
     height:100%;
     width:100%;
+
 }
 .rules{
     background-color:rgba(0, 0, 0, 0.452);
@@ -181,6 +182,8 @@
     height:100%;
     width:100%;
 }
+
+
 .finalPoemModalContent{
     position:fixed;
     background-color:white;
@@ -188,8 +191,12 @@
     left:25%;
     width:50%;
     height:60%;
-    overflow: hidden;
+    overflow: scroll;
 }
+
+.finalPoemModalContent::-webkit-scrollbar {
+    display: none;
+  }
 .rulesContent{
     position:fixed;
     background-color:white;
@@ -218,7 +225,7 @@
     border:1px solid black;
     background-color:white;
     
-    position:absolute;
+    position:fixed;
     padding:3%;
 
     right:5%;
@@ -613,16 +620,7 @@ p{
 }
 ul{ list-style-type: none; }
 
-.sidenavchat{
-    border:double black;
-    position:fixed;
-    top:6%;
-    right:2%;
-    z-index:1;
-    background-color:white;
-    width:20%;
-    text-align:center;
-}
+  
 
 .largeChat{
     left:10%;
@@ -634,4 +632,10 @@ width:80%
 
 }
 
+}
+.downloadButton{
+    position:fixed;
+    left:48%;
+    bottom:5%;
+    z-index:2;
 }
